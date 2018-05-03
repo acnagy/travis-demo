@@ -7,24 +7,49 @@ introducing users to basic features of Travis CI.
 > If you haven't done so, please start with the
 > [initial stage](../../tree/01.intro).
 
-## Sign up for Travis CI
+## Initial look at the configuration
 
-After forking this repository, head over to [travis-ci.org](https://travis-ci.com).
-If you don't yet have a Travis CI account, you would be asked to
-authorize Travis CI to access user data.
+Having enabled Travis CI, it is time to run our first build.
 
-## Enable GitHub Apps Integration
+Let us take a look at our initial configuration:
 
-Once you sign up for Travis CI, activate GitHub Apps Integration.
+```sh-session
+$ cat .travis.yml
+```
 
-## Install Travis CI
+This file is very short:
 
-You can allow Travis CI to access all your repositories, or select few.
-For the purpose of this Workshop, we allow Travis CI to access only this repository.
-Click on the radio button "Only Select Repositories", and search for
-`travis-intro-node`.
-Select it, and click on "Approve and Install".
+```yaml
+language: node_js
+```
+
+This tells Travis CI that we have a Node.js repository on our hands,
+and tells Travis CI to deal with it accordingly.
+In more concrete terms, it will make assumptions about which version
+of Node.js runtime to use, what commands to run, and so on.
+
+> See the [Node.js reference page](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/)
+> for more information.
+
+## Triggering the initial build
+
+It is time to trigger our first build.
+
+To trigger our first build, we need to push a new commit.
+
+```sh-session
+$ git commit --allow-empty -m "Empty commit to trigger the first Travis CI build"
+$ git push origin
+```
+
+Visit Travis CI page https://travis-ci.com/OWNER/travis-intro-node/builds
+to see the progress.
+
+## Observe the build result
+
+Unfortunately, the initial build will fail, because our code does not
+satisfy the assumptions that Travis CI makes about Node.js repositories.
 
 ## Next step
 
-You are now ready to run your [first build on Travis CI](../../tree/03.first_build).
+In [the next step](../../tree/04.customization), we will fix the build.
