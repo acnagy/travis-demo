@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "false"
+    "test": "mocha"
   },
   "author": "",
   "license": "MIT",
