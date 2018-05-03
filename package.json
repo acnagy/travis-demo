@@ -8,10 +8,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "false"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "mocha": "^3.0"
   }
