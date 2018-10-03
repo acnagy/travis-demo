@@ -13,4 +13,8 @@ describe('app', function() {
       done();
     })
   })
+
+  after( function() {
+    app.stop()
+  })
 })
