@@ -109,5 +109,9 @@ $ git tag v0.0.1
 $ git push origin --tags
 ```
 
+### Step 5: Test More Things! 
+Now that we have a working GitHub release, what if we expanded our testing configuration to cover some more environments?
 
-### 
+Let's update our `.travis.yml` to make use of the new Windows build environment, and use Build Stages to make this a bit more organized: 
+
+ 
