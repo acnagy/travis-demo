@@ -1,35 +1,79 @@
-# travis-intro-node
+# Getting Started on Travis CI
 
 This is an example application written in Node.js for
-introducing users to basic features of Travis CI.
+introducing users to basic features of Travis CI. It's based
+off of the self-driven demo, [
+travis-ci/travis-intro-node](https://github.com/travis-ci/travis-intro-node/fork).
 
-## Fork, and look around
+## Welcome to Travis CI!
+We're going to learn how to create project on Travis CI, 
+add testing and deployment configuration, and then try out 
+some new Travis CI features. 
 
-First, [fork this repository](https://github.com/travis-ci/travis-intro-node/fork).
+### Step 1: Clone this Project and Look Around
+You'll need a working [Node.js](https://nodejs.org/en/) and
+[npm](https://www.npmjs.com/) setup to run local tests. You'll also want to
+[clone the project](https://help.github.com/articles/cloning-a-repository/). 
 
-Clone to your local development machine, and have a look around.
-
-```sh-session
-$ git clone https://github.com/OWNER/travis-intro-node.git
-$ cd travis-intro-node
-```
-
-To start the server, run
-
+You can start the app with:
 ```sh-session
 $ node -e 'app = require("./lib/app"); app.start()'
 ```
-
-If you visit [http://localhost:8000](http://localhost:8000), you should see
-a bare minimum web page.
-
-You can confirm that the following runs our basic test, and passes:
+...and then stop the app and run tests with:
 
 ```sh-session
 $ npm install
 $ ./node_modules/mocha/bin/mocha
 ```
 
-## Next step
+### Step 2: Sign-Up for Travis CI
 
-Time to head on over to [the next step](../../tree/02.signup).
+Head over to [travis-ci.com](https://travis-ci.com).
+If you don't yet have a Travis CI account, you would be asked to
+authorize Travis CI to access user data.
+
+
+You can allow Travis CI to access all your repositories, or select few.
+For the purpose of this demo, we'll allow Travis CI to access only this repository.
+Click on the radio button "Only Select Repositories", and search for this repo. Once you find it, click on "Approve and Install".
+
+### Step 3: Create a `.travis.yml`
+The `.travis.yml` is Travis CI's configuration file. It lives in
+the root of your project directory structure, and it's what Travis CI uses to generate your automated build script. Travis CI builds in reasonable defaults, so you can start building this project with very little setup: 
+
+**Add a Basic `.travis.yml`**: 
+ 1. Create a `.travis.yml` file in the root of your project
+ 1. Add the following to the new file:
+ ```yml
+ language: node_js
+ node_js: '8'
+ ```
+
+**Commit the `.travis.yml`**: It is time to trigger our first build! To do so, we need to push a new commit: 
+```sh-session
+git commit -m "add travis ci"
+git push origin master
+```
+yay! The build passes! 🎉
+
+**Test More Runtimes**: Now that we have a basic `travis.yml` 
+configured, we can do some more testing. Travis CI has a neat feature which lets you quickly add configuration to test against multiple versions of languages, dependencies, or environment variables -- it's called a [Build Matrix](https://docs.travis-ci.com/user/customizing-the-build/#build-matrix). To add one for multiple node runtimes, update the `.travis.yml` to look like the following:
+
+```
+language: node_js
+node_js:
+ - '8'
+ - '9'
+ - '10'
+```
+This is a great thing to do via a pull request, so we'll do the following:
+
+```sh-session
+git checkout -b add-more-nodejs
+git add .travis.yml
+git commit -m "add testing for node 9 and 10"
+git push origin add-more-nodejs
+```
+Navigate to the repository, and open up a pull request. You'll see
+the Check Runs (CI Tests) happen, and once everything passes, it's time to merge the PR! 
+
