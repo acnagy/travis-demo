@@ -6,8 +6,8 @@ off of the self-driven demo, [
 travis-ci/travis-intro-node](https://github.com/travis-ci/travis-intro-node).
 
 ## Welcome to Travis CI!
-We're going to learn how to create project on Travis CI, 
-add testing and deployment configuration, and then try out 
+We're going to learn how to create a project on Travis CI, 
+add testing and deployment configurations, and then try out 
 some new Travis CI features. 
 
 ### Step 1: Clone this Project and Look Around
@@ -57,7 +57,7 @@ $ git push origin master
 yay! The build passes! 🎉
 
 **Test More Runtimes**: Now that we have a basic `travis.yml` 
-configured, we can do some more testing. Travis CI has a neat feature which lets you quickly add configuration to test against multiple versions of languages, dependencies, or environment variables -- it's called a [Build Matrix](https://docs.travis-ci.com/user/customizing-the-build/#build-matrix). To add one for multiple node runtimes, update the `.travis.yml` to look like the following:
+configured, we can do some more testing. The [Build Matrix](https://docs.travis-ci.com/user/customizing-the-build/#build-matrix) feature lets quickly add testing against multiple language runtimes, other dependencies, or environment variables. To add one for multiple node runtimes, update the `.travis.yml` to look like the following:
 
 ```
 language: node_js
@@ -85,6 +85,14 @@ Now that we have a build that we're confident of, we're going to deploy it as a 
 1. Paste the token into the Value field
 1. Leave the "Display value in build log" in the "OFF" position.
 1. Click on the "Add" button
+
+Or, 
+
+Using the [cli](https://github.com/travis-ci/travis.rb), run:
+```sh-session
+$ travis encrypt <repo_token>
+```
+... and add the output to your `.travis.yml`.
 
 Next, we'll need to update our `.travis.yml` to add a deploy step: 
 
