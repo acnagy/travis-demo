@@ -3,4 +3,10 @@ node_js:
  - '8'
  - '9'
  - '10'
-
+deploy:
+  provider: releases
+  api_key: $GITHUB_OAUTH_TOKEN
+  file: lib/app.js
+  on:
+    tags: true
+secure: "zZMaUxWVmJUkcV0gygrsXYE+n1RPUleaYPqd3k7u6xqKlfOvc0sXWA9Am8wSoWrBGgTrNsmWOMgQvJid1iDYhoIQ1tqflbphWUjRXrxn2LP+j1UIETRy1TuEeXcvkx9sGrm/rEe6wrBxXaIzG5oCPkBtDGEq1nliE7JyC6X9Kt5BK5mFJ93n+lmeJANa6HLzZ+u1gkkS+/TkG1yjTKuhQ6jsaEQaD7k538hjS5hQPwDP7FUEGFOcEcLwJugj+gWhKa4hz5XV87hKL3GHgRCZJsY1wQDD7LpGq2CsmH0Y8UHB4378XV8ImEGnFNAoHfTF/HnkZS8DwLP3K03iG1MIsAcaZcLjsK3k7m3nCpF8sHkCTk/5PvCuoBC1pxDfBV3JR1XJn7FON0PXN7UoqlZgk1TvNLujViAJS2gzimdcx9W1hujbUtaS9beRDAxX1J2GAzg5n/N4BRtO+AELQiJXfIUBy3ebomZ83YuCP+tCQRl0B7jDUlH23rgEJ9SC8A/MhNZfAPUDJqbhmR/j/rijJ+dn2E5qDG/FqdG4Siouyl6oQPGsk0kL/bI3fzM1yrS4IOcDGBJVhGe4YPm9Uzo661vBwAWs3rcfYkPlO83XiBWBjEJe0Un2UOWlSbqdOkRLxBTtrF3NIT6bT1qo/93G5US0gkvyjSGbLNaG9cwwedk="
